@@ -1,0 +1,1 @@
+exiftool -ImageDescription="a description of Skull Time" -DocumentName="Skull time" src/images/skull.jpeg
