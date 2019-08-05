@@ -1,1 +1,0 @@
-exiftool -ImageDescription="by Carolus Abi" -DocumentName="Pink Dipper" -Copyright="https://unsplash.com/@author_is_down" src/images/carolus-abi-Bbzlx6eA--Y-unsplash.jpg
