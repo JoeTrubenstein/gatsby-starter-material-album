@@ -1,1 +1,1 @@
-exiftool -ImageDescription="from works on paper" -DocumentName="Scorpio" src/images/scorpio.jpg
+exiftool -ImageDescription="by Artemis Faul" -DocumentName="Bar with big plant" -Copyright="https://unsplash.com/@artemisfaul" src/images/artemis-faul-CUbr8ci2HUE-unsplash.jpg

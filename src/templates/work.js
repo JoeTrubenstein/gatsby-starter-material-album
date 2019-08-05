@@ -55,7 +55,7 @@ export default function Work(props) {
         <Toolbar>
           <CameraIcon className={classes.icon} />
           <Typography variant="h6" color="inherit" noWrap>
-            Elaine Brandt Works
+            Gatsby Material Album
           </Typography>
         </Toolbar>
       </AppBar>

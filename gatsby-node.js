@@ -73,12 +73,16 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       .then(exifData => {
         const description = exifData.image.ImageDescription;
         const title = exifData.image.DocumentName;
+        const copyright = exifData.image.Copyright;
 
         createNodeField({
-          node,
           name: `exif`,
-          value: { title, description }
+          node,
+          value: { title, description, copyright }
         });
+      })
+      .then(()=>{
+        console.log('node fields created')
       })
       .catch(error => {
         console.log(error);

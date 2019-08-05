@@ -94,7 +94,7 @@ export default function Index(props) {
         <Toolbar>
           <CameraIcon className={classes.icon} />
           <Typography variant="h6" color="inherit" noWrap>
-            Elaine Brandt Works
+            Gatsby Material Album
           </Typography>
         </Toolbar>
       </AppBar>
@@ -109,7 +109,7 @@ export default function Index(props) {
               color="textPrimary"
               gutterBottom
             >
-              Elaine Brandt
+              Gatsby + Material UI
             </Typography>
             <Typography
               variant="h5"
@@ -117,7 +117,7 @@ export default function Index(props) {
               color="textSecondary"
               paragraph
             >
-              Official website and archive
+              An impeccable pairing
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
@@ -146,7 +146,11 @@ export default function Index(props) {
                     <Typography gutterBottom variant="h5" component="h2">
                       {card.node.fields.exif.title}
                     </Typography>
-                    <Typography>{card.node.fields.exif.description}</Typography>
+                    <Typography>
+                    <a href={card.node.fields.exif.copyright}>
+                        {card.node.fields.exif.description}
+                      </a>
+                    </Typography>
                   </CardContent>
                   <CardActions>
                     <Button href={card.node.name} size="small" color="primary">
@@ -235,6 +239,7 @@ export const pageQuery = graphql`
             exif {
               description
               title
+              copyright
             }
           }
           childImageSharp {
