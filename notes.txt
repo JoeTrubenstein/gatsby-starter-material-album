@@ -1,1 +1,1 @@
-exiftool -ImageDescription="a description of Skull Time" -DocumentName="Skull time" src/images/skull.jpeg
+exiftool -ImageDescription="from works on paper" -DocumentName="Scorpio" src/images/scorpio.jpg

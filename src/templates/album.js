@@ -19,7 +19,7 @@ import { graphql } from "gatsby";
 import Img from "gatsby-image";
 
 export default function Index(props) {
-console.log(props.pageContext)
+  console.log(props.pageContext);
   const { currentPage, numPages } = props.pageContext;
   const prevPage = currentPage - 1 === 1 ? "/" : (currentPage - 1).toString();
   const nextPage = (currentPage + 1).toString();
@@ -38,11 +38,14 @@ console.log(props.pageContext)
   function MadeWithLove() {
     return (
       <Typography variant="body2" color="textSecondary" align="center">
-        {"Built with love by the "}
+        {"Built with "}
         <a color="inherit" href="https://material-ui.com/">
           Material-UI
         </a>
-        {" team."}
+        {" by "}
+        <a color="inherit" href="https://github.com/joeTrubenstein">
+          @JoeTrubenstein
+        </a>
       </Typography>
     );
   }
@@ -141,8 +144,9 @@ console.log(props.pageContext)
                   <Img fluid={card.node.childImageSharp.fluid} />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      {card.node.name}
+                      {card.node.fields.exif.title}
                     </Typography>
+                    <Typography>{card.node.fields.exif.description}</Typography>
                   </CardContent>
                   <CardActions>
                     <Button href={card.node.name} size="small" color="primary">
@@ -227,8 +231,12 @@ export const pageQuery = graphql`
       edges {
         node {
           name
-          id
-          relativePath
+          fields {
+            exif {
+              description
+              title
+            }
+          }
           childImageSharp {
             fluid(maxWidth: 2000, maxHeight: 1700, quality: 100) {
               ...GatsbyImageSharpFluid

@@ -71,8 +71,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     fastExif
       .read(node.absolutePath)
       .then(exifData => {
-        console.log(exifData);
-
         const description = exifData.image.ImageDescription;
         const title = exifData.image.DocumentName;
 
