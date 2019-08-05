@@ -24,6 +24,21 @@ Installation
 yarn
 ```
 
+## Adding your own images
+
+This project pulls three specific fields from a given image's exif data using [fast-exif](https://www.npmjs.com/package/fast-exif).
+
+However, you'll need to edit your own image's exif data first.
+
+The best way of accomplishing this appears to be [ExifTool](https://www.sno.phy.queensu.ca/~phil/exiftool/).
+
+Once installed, you can quickly edit your exif data via the CLI as such:
+
+```sh
+exiftool -ImageDescription="by Mike Gorrell" -DocumentName="Lost In Thought" -Copyright="https://unsplash.com/@mikegorrell" src/images/mike-gorrell-61cMb0WQAMA-unsplash.jpg
+```
+
+
 ## Built With
 
 [Gatsby](https://github.com/gatsbyjs/gatsby)
