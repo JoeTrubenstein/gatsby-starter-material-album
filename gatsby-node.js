@@ -37,7 +37,7 @@ exports.createPages = ({ graphql, actions }) => {
     });
 
     // Create the paginated home view
-    const cardsPerPage = 9;
+    const cardsPerPage = 6;
     const numPages = Math.ceil(works.length / cardsPerPage);
 
     Array.from({ length: numPages }).forEach((_, i) => {
