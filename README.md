@@ -2,6 +2,14 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/53d625bc-0c4a-48fe-b188-71b0ba469277/deploy-status)](https://app.netlify.com/sites/gatsby-starter-material-album/deploys)
 
+## Features
+
+* Material UI styling
+* Pagination
+* Exif data parsing
+
+## About
+
 I've been a big fan of the way Gatsby creates blogs dynamically via Markdown files.
 
 So I figured why not apply the same logic to an image gallery?
@@ -52,5 +60,10 @@ exiftool -ImageDescription="by Mike Gorrell" -DocumentName="Lost In Thought" -Co
 ## Built With
 
 [Gatsby](https://github.com/gatsbyjs/gatsby)
+
 [Material-UI](https://github.com/mui-org/material-ui)
+
+
+
+
 
