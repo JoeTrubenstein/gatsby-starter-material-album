@@ -5,61 +5,30 @@ import CameraIcon from "@material-ui/icons/PhotoCamera";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
+import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
-import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
-import MobileStepper from "@material-ui/core/MobileStepper";
 
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 
-export default function Index(props) {
-  console.log(props.pageContext);
+import Hero from "../components/Hero.js";
+import Footer from "../components/Footer.js";
+import BottomNav from "../components/BottomNav.js";
+
+export default function Album(props) {
   const { currentPage, numPages } = props.pageContext;
   const prevPage = currentPage - 1 === 1 ? "/" : (currentPage - 1).toString();
   const nextPage = (currentPage + 1).toString();
 
   const theme = useTheme();
-  const [activeStep, setActiveStep] = React.useState(currentPage);
-
-  function handleNext() {
-    setActiveStep(prevActiveStep => prevActiveStep + 1);
-  }
-
-  function handleBack() {
-    setActiveStep(prevActiveStep => prevActiveStep - 1);
-  }
-
-  function MadeWithLove() {
-    return (
-      <Typography variant="body2" color="textSecondary" align="center">
-        {"Built with "}
-        <a color="inherit" href="https://material-ui.com/">
-          Material-UI
-        </a>
-        {" by "}
-        <a color="inherit" href="https://github.com/joeTrubenstein">
-          @JoeTrubenstein
-        </a>
-      </Typography>
-    );
-  }
 
   const useStyles = makeStyles(theme => ({
     icon: {
       marginRight: theme.spacing(2)
-    },
-    heroContent: {
-      backgroundColor: theme.palette.background.paper,
-      padding: theme.spacing(8, 0, 6)
-    },
-    heroButtons: {
-      marginTop: theme.spacing(4)
     },
     button: {
       margin: theme.spacing(1)
@@ -74,21 +43,17 @@ export default function Index(props) {
       flexDirection: "column"
     },
     cardMedia: {
-      paddingTop: "56.25%" // 16:9
+      paddingTop: "50%"
     },
     cardContent: {
       flexGrow: 1
-    },
-    footer: {
-      backgroundColor: theme.palette.background.paper,
-      padding: theme.spacing(6)
     }
   }));
 
   const classes = useStyles();
 
   return (
-    <React.Fragment>
+    <>
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
@@ -99,44 +64,10 @@ export default function Index(props) {
         </Toolbar>
       </AppBar>
       <main>
-        {/* Hero unit */}
-        <div className={classes.heroContent}>
-          <Container maxWidth="sm">
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="textPrimary"
-              gutterBottom
-            >
-              Gatsby + Material UI
-            </Typography>
-            <Typography
-              variant="h5"
-              align="center"
-              color="textSecondary"
-              paragraph
-            >
-              An impeccable pairing
-            </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    Main call to action
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Secondary action
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
-          </Container>
-        </div>
+        {/*  */}
+        <Hero />
+        {/*  */}
         <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
           <Grid container spacing={4}>
             {props.data.allFile.edges.map(card => (
               <Grid item key={card.node.id} xs={12} sm={6} md={4}>
@@ -147,7 +78,7 @@ export default function Index(props) {
                       {card.node.fields.exif.title}
                     </Typography>
                     <Typography>
-                    <a href={card.node.fields.exif.copyright}>
+                      <a href={card.node.fields.exif.copyright}>
                         {card.node.fields.exif.description}
                       </a>
                     </Typography>
@@ -164,64 +95,16 @@ export default function Index(props) {
         </Container>
       </main>
       {/*  */}
-      <Container>
-        <MobileStepper
-          variant="dots"
-          steps={numPages}
-          position="static"
-          activeStep={activeStep - 1}
-          className={classes.root}
-          nextButton={
-            <Button
-              href={nextPage}
-              size="small"
-              onClick={handleNext}
-              disabled={activeStep === numPages}
-            >
-              Next
-              {theme.direction === "rtl" ? (
-                <KeyboardArrowLeft />
-              ) : (
-                <KeyboardArrowRight />
-              )}
-            </Button>
-          }
-          backButton={
-            <Button
-              href={prevPage}
-              size="small"
-              onClick={handleBack}
-              disabled={activeStep === 1}
-            >
-              {theme.direction === "rtl" ? (
-                <KeyboardArrowRight />
-              ) : (
-                <KeyboardArrowLeft />
-              )}
-              Back
-            </Button>
-          }
-        />
-      </Container>
+      <BottomNav
+        numPages={numPages}
+        prevPage={prevPage}
+        nextPage={nextPage}
+        currentPage={currentPage}
+        theme={theme}
+      />
       {/*  */}
-
-      {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="textSecondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <MadeWithLove />
-      </footer>
-      {/* End footer */}
-    </React.Fragment>
+      <Footer />
+    </>
   );
 }
 
@@ -234,6 +117,7 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
+          id
           name
           fields {
             exif {

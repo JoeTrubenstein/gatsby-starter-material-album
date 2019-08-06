@@ -12,6 +12,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 
+import Footer from "../components/Footer.js";
+
 export default function Work(props) {
   const useStyles = makeStyles(theme => ({
     icon: {
@@ -33,23 +35,8 @@ export default function Work(props) {
 
   const classes = useStyles();
 
-  function MadeWithLove() {
-    return (
-      <Typography variant="body2" color="textSecondary" align="center">
-        {"Built with "}
-        <a color="inherit" href="https://material-ui.com/">
-          Material-UI
-        </a>
-        {" by "}
-        <a color="inherit" href="https://github.com/joeTrubenstein">
-          @JoeTrubenstein
-        </a>
-      </Typography>
-    );
-  }
-
   return (
-    <React.Fragment>
+    <>
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
@@ -75,23 +62,8 @@ export default function Work(props) {
           <Img fluid={props.data.file.childImageSharp.fluid} />
         </Paper>
       </Container>
-      {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="textSecondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <MadeWithLove />
-      </footer>
-      {/* End footer */}
-    </React.Fragment>
+      <Footer />
+    </>
   );
 }
 

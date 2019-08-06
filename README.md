@@ -1,28 +1,38 @@
 # Gatsby Material Album
 
-I was really impressed with the way Gatsby created blogs dynamically via Markdown files.
-
-So I figured why not apply the same logic to images in a gallery?
-
-This starter uses the gatsby-node.js file to create a new page for every image, and creates custom node fields from their exif data.
-
 [![Netlify Status](https://api.netlify.com/api/v1/badges/53d625bc-0c4a-48fe-b188-71b0ba469277/deploy-status)](https://app.netlify.com/sites/gatsby-starter-material-album/deploys)
+
+I've been a big fan of the way Gatsby creates blogs dynamically via Markdown files.
+
+So I figured why not apply the same logic to an image gallery?
+
+This starter uses the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) to accomplish two things.
+
+It creates a new page from each image file,
+
+and creates custom node fields so their exif data can be accessed via GraphQl.
 
 ## Getting Started
 
-Either [clone the repo](https://github.com/JoeTrubenstein/gatsby-starter-material-album.git)
+Either clone the repo with 
 
-Or use Gatsby CLI
+```sh
+git clone https://github.com/JoeTrubenstein/gatsby-starter-material-album.git
+```
+
+Or use the Gatsby CLI
 
 ```sh
 gatsby new material-album https://github.com/JoeTrubenstein/gatsby-starter-material-album.git
 ```
 
-Installation
+then simply run
 
 ```sh
 yarn
 ```
+
+to install dependencies
 
 ## Adding your own images
 

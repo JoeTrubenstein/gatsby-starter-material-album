@@ -5,7 +5,7 @@ const fastExif = require("fast-exif");
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  const artWork = path.resolve(`./src/templates/work.js`);
+  const artWork = path.resolve(`./src/templates/photo.js`);
   return graphql(
     `
       {
@@ -23,9 +23,9 @@ exports.createPages = ({ graphql, actions }) => {
       throw result.errors;
     }
 
-    // Create individual artwork pages.
     const works = result.data.allFile.edges;
 
+    // Create a new page from each image file
     works.forEach((work, index) => {
       createPage({
         path: work.node.name,
@@ -44,6 +44,8 @@ exports.createPages = ({ graphql, actions }) => {
       createPage({
         path: i === 0 ? `/` : `/${i + 1}`,
         component: path.resolve("./src/templates/album.js"),
+
+        // pass variables to the album component using page context
         context: {
           limit: cardsPerPage,
           skip: i * cardsPerPage,
@@ -58,6 +60,7 @@ exports.createPages = ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
+  // create a slug out of the image's filename
   if (node.internal.type === `File`) {
     const value = createFilePath({ node, getNode });
     createNodeField({
@@ -67,10 +70,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     });
   }
 
+  // create custom node fields containing exif data for each image file
   if (node.internal.mediaType === "image/jpeg") {
     fastExif
       .read(node.absolutePath)
       .then(exifData => {
+
         const description = exifData.image.ImageDescription;
         const title = exifData.image.DocumentName;
         const copyright = exifData.image.Copyright;

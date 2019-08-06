@@ -12,7 +12,7 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images/`,
-        ignore: [`**/\.*`], // ignore files starting with a dot
+        ignore: [`**/\.*`],
       },
     },
     `gatsby-plugin-sharp`,
@@ -32,6 +32,6 @@ module.exports = {
     'gatsby-plugin-react-helmet',
   ],
   siteMetadata: {
-    title: 'My page',
+    title: 'Gatsby Material Album',
   },
 };
