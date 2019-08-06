@@ -13,6 +13,7 @@ export default function NotFound() {
         </Typography>
         <Link to="/">Go to the main page</Link>
       </Box>
+      
     </Container>
   );
 }
