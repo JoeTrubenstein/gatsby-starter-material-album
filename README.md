@@ -10,15 +10,15 @@
 
 ## About
 
-I've been a big fan of the way Gatsby creates blogs dynamically via Markdown files.
+I've been a big fan of the way Gatsby creates blog post pages dynamically via Markdown files.
 
-So I figured why not apply the same logic to an image gallery?
+So I figured why not apply the same logic to images in a gallery?
 
 This starter uses the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) to accomplish two things.
 
-It creates a new page from each image file,
+- It creates a new page from each image file,
 
-and creates custom node fields so their exif data can be accessed via GraphQl.
+- and creates custom node fields so their exif data can be accessed via GraphQl.
 
 ## Getting Started
 
@@ -44,7 +44,7 @@ to install dependencies
 
 ## Adding your own images
 
-This project pulls three specific fields from a given image's exif data using [fast-exif](https://www.npmjs.com/package/fast-exif).
+This project reads a given image's exif data using [fast-exif](https://www.npmjs.com/package/fast-exif).
 
 However, you'll need to edit your own image's exif data first.
 

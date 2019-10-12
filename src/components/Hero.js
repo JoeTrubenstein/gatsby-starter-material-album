@@ -38,13 +38,21 @@ export default function Hero() {
         <div className={classes.heroButtons}>
           <Grid container spacing={2} justify="center">
             <Grid item>
-              <Button variant="contained" color="primary">
-                Main call to action
+              <Button
+                href="https://material-ui.com"
+                variant="contained"
+                color="primary"
+              >
+                Material-UI
               </Button>
             </Grid>
             <Grid item>
-              <Button variant="outlined" color="primary">
-                Secondary action
+              <Button
+                href="https://www.gatsbyjs.org"
+                variant="outlined"
+                color="primary"
+              >
+                Gatsby JS
               </Button>
             </Grid>
           </Grid>

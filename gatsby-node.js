@@ -75,7 +75,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     fastExif
       .read(node.absolutePath)
       .then(exifData => {
-
         const description = exifData.image.ImageDescription;
         const title = exifData.image.DocumentName;
         const copyright = exifData.image.Copyright;
@@ -86,8 +85,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
           value: { title, description, copyright }
         });
       })
-      .then(()=>{
-        console.log('node fields created')
+      .then(() => {
+        console.log("node fields created");
       })
       .catch(error => {
         console.log(error);
